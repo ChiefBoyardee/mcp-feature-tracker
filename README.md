@@ -123,20 +123,18 @@ Once initialized, the client can use other endpoints like `addTask`, `getTasks`,
 
 ### Example Client Configurations
 
-Below are examples of how you might configure different MCP clients to use this server. Replace placeholders with your actual server details and project path. **The exact configuration format depends on the specific client.**
+Below are examples of how you might configure different MCP clients to use this server. Replace placeholders with your actual server details and project path. **Refer to the specific client's documentation for the most accurate configuration method.**
 
 **1. Cursor:**
 
-Cursor typically requires configuring a custom MCP provider in its settings.
+Configure Cursor by editing its `mcp.json` file (usually found via `Settings ⚙️ > MCP > + Add new global MCP server`)
 
 ```json
-// Likely in Cursor's settings.json or similar
 "cursor.mcpProviders": [
   {
     "name": "Local Feature Tracker",
     "apiBaseUrl": "http://localhost:31337", // Or your configured MCP_PORT
-    "toolPrefix": "mcp_feature-tracker", // Conventionally matches the server's prefix
-    // Potentially other Cursor-specific settings
+    "toolPrefix": "mcp_feature-tracker" // Conventionally matches the server's prefix
   }
 ]
 ```
@@ -144,17 +142,15 @@ Cursor typically requires configuring a custom MCP provider in its settings.
 
 **2. Windsurf:**
 
-Configure Windsurf with the server details:
+Configure Windsurf by creating or editing its configuration file (e.g., `windsurf_config.json`):
 
 ```json
-// Example windsurf_config.json
 {
   "mcpServers": [
     {
       "id": "local-tracker",
       "url": "http://localhost:31337",
       "prefix": "mcp_feature-tracker"
-      // Windsurf might require explicit tool listing or discovery
     }
   ]
 }
@@ -163,28 +159,27 @@ Configure Windsurf with the server details:
 
 **3. Claude Code:**
 
-Configure Claude Code's MCP endpoints:
+Configure Claude Code by creating or editing its settings file (e.g., `claude_settings.yaml`):
 
 ```yaml
-# Example claude_settings.yaml
 mcp:
   endpoints:
     - name: MyTracker
       baseUrl: http://localhost:31337/
-      toolFilter: "mcp_feature-tracker_*" # If it supports filtering
+      toolFilter: "mcp_feature-tracker_*"
 ```
 *Initialization Call Required:* `mcp_feature-tracker_initializeProjectContext` with `workspaceFolderPath`.
 
 **4. Cline (CLI Tool):**
 
-Configure Cline via environment variables or config file:
+Configure Cline either by setting environment variables *before* running commands, or by editing its configuration file:
 
 ```bash
-# Set environment variable
+# Set environment variables for the current session
 export MCP_SERVER_URL=http://localhost:31337
 export MCP_TOOL_PREFIX=mcp_feature-tracker
 
-# First command for a project
+# First command for a project (initialization)
 cline mcp call mcp_feature-tracker_initializeProjectContext '{"workspaceFolderPath": "/path/to/project"}'
 
 # Subsequent commands
@@ -193,14 +188,14 @@ cline mcp call mcp_feature-tracker_addTask '{"title": "New Task", "description":
 
 **5. Roo:**
 
-Configure Roo's MCP provider via its UI or settings:
+Configure Roo using its settings interface:
 
 *   **Server Name:** Local Feature Tracker
 *   **Base URL:** `http://localhost:31337`
 *   **Tool Prefix:** `mcp_feature-tracker`
 *   *(Initialization Call Required via Roo's interface/first command)*
 
-**Important:** Always refer to the specific MCP client's documentation for the correct configuration method. The key details needed are the server's base URL (`http://localhost:PORT`) and the tool prefix (`mcp_feature-tracker`).
+**Important:** While these examples provide common patterns, always refer to the specific MCP client's documentation for the most up-to-date and accurate configuration method. The key details needed are the server's base URL (`http://localhost:PORT`) and the tool prefix (`mcp_feature-tracker`).
 
 ## Contributing
 
