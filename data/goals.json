@@ -1,0 +1,9 @@
+{
+  "goals": [
+    "Create an engaging biotech-themed incremental game using Love2D",
+    "Implement multiple prestige layers for long-term engagement",
+    "Design intuitive and visually appealing UI representing biotech concepts",
+    "Balance progression curve for satisfying gameplay experience",
+    "Ensure code is modular, maintainable, and well-documented"
+  ]
+}

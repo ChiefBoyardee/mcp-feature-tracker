@@ -1,0 +1,152 @@
+{
+  "notes": [
+    {
+      "id": "1744090537917",
+      "title": "Cell Division Implementation Notes",
+      "content": "The cell division mechanic has been implemented with the following key aspects:\n\n1. Each cell generates glucose over time at a rate affected by the cell metabolism upgrade\n2. Cell division progress increases automatically as long as there is sufficient glucose\n3. Division time is calculated with diminishing returns for division speed upgrades\n4. When division completes, a new cell is added and resources are consumed\n5. UI provides visual feedback on division progress and shows cells dividing with animation\n6. Cell count increases linearly but resource production scales with it, creating exponential growth\n\nFor future improvements:\n- Consider adding different cell types with specialized functions\n- Implement mitosis visualization with more detailed animation\n- Add cell health/efficiency factors that could be affected by environmental conditions",
+      "tags": [
+        "implementation",
+        "gameplay",
+        "core-mechanics"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:35:37.917Z"
+    },
+    {
+      "id": "1744090545025",
+      "title": "Resource System Balance Considerations",
+      "content": "The resource system has been carefully balanced to provide a satisfying progression curve:\n\n1. Base resource (glucose) production scales linearly with cell count\n2. Conversion rates between resource tiers create meaningful choices about when to convert\n3. Higher-tier resources are more valuable but harder to produce in bulk\n4. Upgrade costs increase exponentially to maintain challenge\n5. Production rate benefits apply diminishing returns to prevent infinite scaling\n\nTesting is needed to ensure:\n- Early game doesn't feel too slow or grindy\n- Mid-game conversion decisions feel meaningful rather than obvious\n- Late-game scaling remains challenging without becoming impossible\n- Prestige thresholds are achievable but require sufficient gameplay time\n\nSuggested testing approach:\n1. Measure time to first cell division\n2. Measure time to unlock amino acid production\n3. Track rate of cell count growth over time\n4. Evaluate time to reach first prestige threshold",
+      "tags": [
+        "balance",
+        "gameplay",
+        "testing"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:35:45.025Z"
+    },
+    {
+      "id": "1744097187655",
+      "title": "UI Component Implementation Summary",
+      "content": "We've successfully implemented a component-based UI system with the following key features:\n\n1. **Components with Standard Lifecycle**\n   - Each component has consistent initialize, update, draw methods\n   - Components handle their own visibility and scaling\n   - Components manage their own state\n\n2. **Specialized Components Created**\n   - CellVisualization - Handles rendering and animating cells\n   - NotificationSystem - Manages user notifications with fade effects\n   - Panel - Container for UI elements with standard styling\n\n3. **Integrated Debug Features**\n   - Press F3 to toggle debug information\n   - Shows component count, FPS, and screen dimensions\n   - Will help with future development and testing\n\n4. **Improved Code Organization**\n   - Reduced code duplication\n   - Clear separation of concerns\n   - More maintainable structure for future additions\n\n5. **Responsive Design**\n   - All components handle screen scaling automatically\n   - Works with the resolution tester\n   - Consistent calculations for positioning elements\n\nThe current implementation provides a solid foundation for future UI development. Each component handles its own lifecycle, scaling, and positioning, which makes adding new UI elements much simpler.",
+      "tags": [
+        "UI",
+        "architecture",
+        "components"
+      ],
+      "relatedTask": "1744096815008",
+      "createdAt": "2025-04-08T07:26:27.655Z"
+    },
+    {
+      "id": "1744101311022",
+      "title": "UI Overlap Issues",
+      "content": "Several UI elements are overlapping in the current build, particularly when resizing the game window. The main areas of concern are:\n\n1. Cell visualization can overlap with the research panel when the window is small\n2. Tooltips sometimes extend beyond their parent panel boundaries\n3. Button labels can overlap when UI scale is increased\n\nThese issues should be addressed by implementing better responsive layout handling and adding minimum spacing requirements between components.",
+      "tags": [
+        "UI",
+        "Bug",
+        "Layout"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T08:35:11.022Z"
+    },
+    {
+      "id": "1744132211235",
+      "title": "UI Interaction and Styling Fixes",
+      "content": "Fixed several UI issues in the biotech game:\n\n1. Fixed click interactions by properly setting the interface.scale from core.uiScale and updating it on window resize. The issue was that the interface scale was not being properly initialized, causing mismatches between visual position and click detection.\n\n2. Improved menu layout by:\n   - Moving tab buttons up and making them smaller to create better spacing\n   - Adding a gap between the menu and content area\n   - Adding a proper content background area with rounded corners\n\n3. Changed the game area background from white to a darker blue-gray color that matches the game's theme (using the new gameBackground color in the theme).\n\n4. Fixed the \"Glucose\" text appearing behind buttons by:\n   - Adding a background to the resource bar for better visibility\n   - Adding a border at the bottom of the resource bar\n   - Moving the resource drawing to occur after all buttons are drawn\n   - Improving spacing between resource text elements\n\n5. Ensured tooltips remain properly visible by fixing the drawing order in the core.draw function.\n\nThese changes improve both the visual appearance and functionality of the UI while maintaining the game's overall style.",
+      "tags": [
+        "ui",
+        "bugfix",
+        "styling"
+      ],
+      "relatedTask": "1744131942976",
+      "createdAt": "2025-04-08T17:10:11.235Z"
+    },
+    {
+      "id": "1744132635743",
+      "title": "UI Coordinate and Click Interaction Fixes",
+      "content": "Made several important UI fixes to address click interaction issues:\n\n1. **Fixed Click Handling**: Modified the mousepressed, mousereleased, and mousemoved functions in interface.lua to use raw coordinates instead of incorrectly scaling them. This was causing a mismatch between visual position and click detection.\n\n2. **Proper Event Propagation**: Updated interface handlers to properly forward events to core first, ensuring that events are processed in the correct order.\n\n3. **Added Debugging Tools**:\n   - Added debug flags to components.lua to control debugging features\n   - Improved coordinate logging in button's isInside method\n   - Added a component bounds visualization feature (toggle with F4 key)\n   - Standardized debug logging format for easier troubleshooting\n\n4. **Consistency Improvements**:\n   - Ensured that all component isInside methods handle coordinates consistently\n   - Removed duplicate scaling calculations\n   - Fixed event forwarding between interface and core modules\n\nThese changes should completely resolve the issue where clicks weren't being detected properly on buttons and other UI elements. The added debugging tools will make it easier to identify and fix similar issues in the future.\n\nNote: The F4 key can now be used to visualize component boundaries, which is extremely helpful for understanding click areas and diagnosing UI problems.",
+      "tags": [
+        "ui",
+        "bugfix",
+        "debugging"
+      ],
+      "relatedTask": "1744132574365",
+      "createdAt": "2025-04-08T17:17:15.743Z"
+    },
+    {
+      "id": "1744604337484",
+      "title": "PDF Preview Navigation Implementation Notes",
+      "content": "Key implementation details and considerations for the PDF preview navigation system:\n\n1. Wheel Event Handling:\n   - Properly intercepts and handles different types of scroll events\n   - Maintains clear separation between zoom, horizontal scroll, and vertical scroll\n   - Uses event.accept() to prevent event propagation when handled\n\n2. Zoom Implementation:\n   - Uses a zoom factor of 1.2 for smooth transitions\n   - Maintains zoom bounds (0.1x to 5.0x) to prevent extreme scaling\n   - Updates display immediately after zoom changes\n\n3. Horizontal Scrolling:\n   - Uses scrollbar's singleStep as base unit for consistent behavior\n   - Applies 4x multiplier for comfortable scrolling speed\n   - Includes bounds checking to prevent over-scrolling\n   - Handles both Alt+Scroll and native horizontal scroll events\n\n4. Performance Considerations:\n   - Efficient event handling to maintain smooth operation\n   - Proper cleanup and event acceptance\n   - Smart handling of scroll deltas for consistent behavior\n\n5. User Experience:\n   - Intuitive modifier keys (Ctrl for zoom, Alt for horizontal)\n   - Visual feedback through zoom level display\n   - Smooth and responsive controls\n   - Maintains standard PDF viewer conventions",
+      "tags": [
+        "implementation",
+        "navigation",
+        "zoom",
+        "scroll",
+        "user-experience"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-14T04:18:57.484Z"
+    },
+    {
+      "id": "1744618124051",
+      "title": "PDF Editing Features Plan",
+      "content": "Based on my research of PyMuPDF capabilities, here's a recommended plan for implementing PDF editing features:\n\n## Key Features to Implement\n\n1. **Text Markup Tools**\n   - Text highlighting\n   - Text underlining\n   - Text strikethrough\n   - Text annotation (adding comments)\n\n2. **Annotation Tools**\n   - Sticky notes\n   - Free text annotations\n   - Drawing tools (shapes, lines, arrows)\n   - Stamps\n\n3. **Redaction Tool**\n   - Mark areas for redaction\n   - Apply redactions with custom fill colors\n\n4. **Content Manipulation**\n   - Insert images\n   - Extract images\n   - Rotate pages or the entire document\n   - Crop pages\n\n5. **Document Security**\n   - Add password protection\n   - Set document permissions\n\n## Implementation Strategy\n\n### Step 1: Create a new Editing Tab/Panel\n- Add a new tab to the existing UI for editing features\n- Implement a toolbar with icons for different editing tools\n\n### Step 2: Implement Annotation Tools\n- Use PyMuPDF's annotation API (Page.add_*_annot methods)\n- Allow annotation customization (colors, opacity, etc.)\n- Implement UI for annotation properties\n\n### Step 3: Implement Text Markup\n- Use text search and annotation features to implement text markup\n- Display marked text with appropriate visual cues\n\n### Step 4: Add Redaction Feature\n- Implement Page.add_redact_annot() and Page.apply_redactions()\n- Add UI controls for redaction properties\n\n### Step 5: Add Security Controls\n- Create dialog for password protection using Document.save() encryption parameters\n\n### Technical Considerations\n\n1. **UI Design**\n   - Need to add a toggle between view mode and edit mode\n   - Implement selection mechanism for text/areas\n   - Create property panels for annotation customization\n\n2. **Performance**\n   - Minimize redraws when adding annotations\n   - Consider incremental saves for better performance\n\n3. **Limitations**\n   - PyMuPDF doesn't support direct text editing in PDFs\n   - Need to use annotations and redactions instead\n\n4. **Dependencies**\n   - No additional dependencies needed beyond PyMuPDF\n\nThis implementation will transform the application from a simple PDF splitter to a more comprehensive PDF utility while maintaining its clean interface and performance.",
+      "tags": [
+        "feature-plan",
+        "pdf-editing",
+        "pymupdf"
+      ],
+      "relatedTask": "1744618110269",
+      "createdAt": "2025-04-14T08:08:44.051Z"
+    },
+    {
+      "id": "1744740679876",
+      "title": "PDF Editing Toolbar Design Notes",
+      "content": "Toolbar location: Docked horizontally above pdfPreviewArea.\nVisibility: Show only when PDF is loaded and preview is active.\nControls: Icon-based buttons (QToolButton) for Rotate Left, Rotate Right, Delete, Move Up, Move Down.\nConsider grouping related actions (rotation, movement).",
+      "tags": [
+        "UI Design",
+        "PDF Editing"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:11:19.876Z"
+    },
+    {
+      "id": "ef5761aa-cc62-4bb1-b706-432a7c626b0f",
+      "title": "PDF Editing Toolbar Design",
+      "content": "Toolbar Design:\n- Placement: Docked directly above the pdfPreviewArea QScrollArea.\n- Visibility: Visible only when a PDF is loaded and its preview is displayed.\n- Trigger: Show/hide logic tied to loading/clearing a PDF.\n- Content: Buttons for Rotate Left, Rotate Right, Delete Page, Move Page Up, Move Page Down. Standard icons should be used.",
+      "tags": [
+        "UI",
+        "Design",
+        "PDF Editing"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:21:25.213Z",
+      "updatedAt": "2025-04-15T18:21:25.213Z"
+    },
+    {
+      "id": "5186f625-7af8-40e9-b334-69ee36e62d22",
+      "title": "PDF Editing Visual Feedback Plan",
+      "content": "Visual Feedback for Edits:\n- Rotation: Thumbnail image rerendered with the new orientation.\n- Deletion: Thumbnail becomes semi-transparent (e.g., 50% opacity) and optionally gets a subtle 'deleted' icon overlay. It remains in its position until a split/save action, or potentially hidden completely via an option.\n- Reordering: The preview area redraws all non-deleted thumbnails in the updated sequence.\n- Selection: Selected page thumbnail has a distinct border (e.g., theme's accent color).",
+      "tags": [
+        "UI",
+        "Design",
+        "PDF Editing",
+        "Visuals"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:22:06.751Z",
+      "updatedAt": "2025-04-15T18:22:06.751Z"
+    },
+    {
+      "id": "c3ab84a1-54b3-4d1d-a32c-b4d5025c7e5e",
+      "title": "Confirm PDF Library",
+      "content": "Confirmed PyMuPDF (fitz) version 1.23.26 is listed in requirements.txt and will be used for PDF reading and manipulation (rotation, page extraction).",
+      "tags": [
+        "Dependency",
+        "PDF"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:41:06.253Z",
+      "updatedAt": "2025-04-15T18:41:06.253Z"
+    }
+  ]
+}

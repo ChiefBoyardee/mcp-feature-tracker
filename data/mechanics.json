@@ -1,0 +1,95 @@
+{
+  "mechanics": [
+    {
+      "id": "1744088577647",
+      "name": "Cell Division",
+      "description": "The primary growth mechanic where cells divide to create more cells, increasing production rate but consuming resources in the process.",
+      "implementation": "Use a formula where division time = base_time * (1 - efficiency_upgrades) and apply diminishing returns for subsequent divisions.",
+      "dependencies": [],
+      "createdAt": "2025-04-08T05:02:57.647Z",
+      "updatedAt": "2025-04-08T05:02:57.647Z"
+    },
+    {
+      "id": "1744090472030",
+      "name": "Resource System",
+      "description": "A tiered resource system where basic resources (glucose) are used to create more complex components (amino acids, proteins) which enable new capabilities. Resources are generated over time based on the number of cells and efficiency upgrades.",
+      "implementation": "Each cell generates glucose at a base rate, modified by metabolism upgrades. Higher-tier resources are created through conversion of lower-tier resources, with appropriate conversion rates. Each tier requires a specific unlock to be purchased with lower-tier resources.",
+      "dependencies": [
+        "Cell Division"
+      ],
+      "createdAt": "2025-04-08T05:34:32.030Z",
+      "updatedAt": "2025-04-08T05:34:32.030Z"
+    },
+    {
+      "id": "1744090480535",
+      "name": "Upgrade System",
+      "description": "Players can purchase upgrades to improve efficiency of resource generation and cell division. Upgrades become progressively more expensive using a scaling formula.",
+      "implementation": "The cost of each upgrade level increases exponentially, while the benefits apply diminishing returns. Each upgrade affects a specific aspect of gameplay such as resource production rate or cell division speed.",
+      "dependencies": [
+        "Resource System"
+      ],
+      "createdAt": "2025-04-08T05:34:40.535Z",
+      "updatedAt": "2025-04-08T05:34:40.535Z"
+    },
+    {
+      "id": "1744090485420",
+      "name": "Prestige System",
+      "description": "The game features multiple prestige layers that represent scientific breakthroughs, allowing players to reset progress but gain permanent bonuses. Each layer represents a more advanced area of biotech research.",
+      "implementation": "When specific milestones are reached, players can reset their progress to advance to the next prestige layer. Each new layer provides new mechanics, resources, and challenges while providing multipliers to previous layers' production.",
+      "dependencies": [
+        "Cell Division",
+        "Resource System"
+      ],
+      "createdAt": "2025-04-08T05:34:45.420Z",
+      "updatedAt": "2025-04-08T05:34:45.420Z"
+    },
+    {
+      "id": "1744099496058",
+      "name": "Mitosis Manager System",
+      "description": "A semi-automatic cell division system that replaces the manual \"Divide Cell\" button with a tiered upgrade structure:\n\n1. Basic Mitosis: Cells divide automatically but slowly using glucose, with a progress bar showing division progress.\n\n2. Upgradable tiers:\n   - Mitosis Efficiency: Reduces glucose cost per division\n   - Division Rate: Increases speed of automatic division\n   - Batch Division: Occasionally divides multiple cells at once\n   - Division Automation: Controls how many cells can divide simultaneously\n\n3. Player interaction:\n   - Set division threshold (minimum glucose to maintain)\n   - Boost button: Temporarily accelerates division rate at increased cost\n   - Manual division option still available for early game\n\nThe system provides a progression path from manual division to increasingly automated and efficient division, maintaining player agency while reducing tedious clicking.",
+      "implementation": null,
+      "dependencies": [],
+      "createdAt": "2025-04-08T08:04:56.058Z",
+      "updatedAt": "2025-04-08T08:04:56.058Z"
+    },
+    {
+      "id": "1744099624898",
+      "name": "Cell Division Pathways",
+      "description": "Replace the manual \"Divide Cell\" button with an automated, strategic cell division system featuring multiple pathways:\n\n1. **Automatic Base Division**: Cells automatically divide when enough resources are available, with progress visible in the UI.\n\n2. **Division Pathways**: Players can choose different division strategies/pathways:\n   - **Rapid Division**: Faster but less efficient resource usage\n   - **Efficient Division**: Slower but uses fewer resources\n   - **Specialized Division**: Creates cells optimized for specific resource production\n\n3. **Division Boosters**: Temporary boosts that can be activated to accelerate division:\n   - **Mitosis Accelerator**: Temporarily speeds up cell division\n   - **Resource Catalyst**: Temporarily reduces resource cost for division\n   - **Growth Factor**: Temporarily increases the chance of generating specialized cells\n\n4. **Upgrade System**: Multiple upgrade paths for each division strategy:\n   - Tech tree for each division pathway\n   - Permanent upgrades that can be purchased with resources\n   - Prestige upgrades that carry over between resets\n\n5. **Automation Unlock**: Allow players to set thresholds for when to switch between division pathways automatically based on resource levels.",
+      "implementation": "To implement this system:\n\n1. Modify `gameState.lua`:\n   - Add division pathway settings and selected pathway\n   - Add cooldowns for division boosters\n   - Add upgrade tracking for cell division pathways\n\n2. Modify `cellSystem.lua`:\n   - Add automatic cell division logic based on selected pathway\n   - Implement different resource costs and speeds for each pathway\n   - Add logic for division boosters and their effects\n   - Add logic for specialized cell types\n\n3. Update UI in `ui/controls.lua`:\n   - Replace \"Divide Cell\" button with pathway selector\n   - Add booster buttons with cooldown indicators\n   - Add progress visualization for each pathway\n   - Create toggle for automation settings\n\n4. Add new components in `ui/components.lua`:\n   - Create pathway selector component\n   - Create specialized cell visualization\n   - Create cooldown indicator for boosters\n\nThis system maintains the core mechanics while adding strategic depth and reducing repetitive clicking.",
+      "dependencies": [
+        "Core Game Loop",
+        "Resource System",
+        "Upgrade System"
+      ],
+      "createdAt": "2025-04-08T08:07:04.898Z",
+      "updatedAt": "2025-04-08T08:07:04.898Z"
+    },
+    {
+      "id": "1744100402614",
+      "name": "Cell Specialization System",
+      "description": "A system that allows cells to be specialized into different types with unique benefits:\n1. Producer Cells: Generate more resources (50% bonus to production)\n2. Research Cells: Increase research point generation\n3. Catalyst Cells: Boost division rate and provide minor production bonus\n\nCells automatically divide at a base rate determined by upgrades, with a specialization cost that scales with the number of cells of that type. The system includes a \"division energy\" resource that regenerates over time and can be spent to boost division progress.",
+      "implementation": "- Added cell types (producer, research, catalyst) to gameState\n- Modified cell visualization to show different cell types with distinct colors\n- Implemented automatic division logic in gameState.update\n- Created cell specialization UI with associated costs\n- Added division energy resource with regeneration mechanics\n- Created boost button to spend energy for immediate division progress",
+      "dependencies": [
+        "Automatic Cell Division",
+        "Resource Generation System",
+        "Upgrade System"
+      ],
+      "createdAt": "2025-04-08T08:20:02.614Z",
+      "updatedAt": "2025-04-08T08:20:02.614Z"
+    },
+    {
+      "id": "1744604329309",
+      "name": "PDF Preview Navigation Controls",
+      "description": "A comprehensive navigation system for the PDF preview that includes zooming and scrolling controls:\n\n1. Zooming:\n   - Ctrl+Scroll Up: Zoom in (1.2x per step)\n   - Ctrl+Scroll Down: Zoom out (1/1.2x per step)\n   - Zoom range: 0.1x to 5.0x\n   - Real-time zoom level display\n\n2. Scrolling:\n   - Regular scroll: Vertical scrolling\n   - Alt+Scroll: Horizontal scrolling (4x scrollbar step multiplier)\n   - Native horizontal scroll support\n   - Proper bounds checking and smooth scrolling\n\n3. Visual Feedback:\n   - Zoom percentage indicator\n   - Automatic viewport adjustment\n   - Smooth rendering at all zoom levels",
+      "implementation": "The navigation controls are implemented in the PDFPreviewWidget class:\n\n1. Zoom Control:\n```python\ndef wheelEvent(self, event):\n    if event.modifiers() & Qt.KeyboardModifier.ControlModifier:\n        v_delta = event.angleDelta().y()\n        if v_delta > 0:\n            self.zoom_in()\n        elif v_delta < 0:\n            self.zoom_out()\n        event.accept()\n        return\n```\n\n2. Horizontal Scroll:\n```python\nif event.modifiers() & Qt.KeyboardModifier.AltModifier:\n    h_bar = self.horizontalScrollBar()\n    if h_bar:\n        step = h_bar.singleStep() * 4\n        delta = int(-v_delta / 120.0 * step)\n        new_pos = h_bar.value() + delta\n        new_pos = max(h_bar.minimum(), min(new_pos, h_bar.maximum()))\n        h_bar.setValue(new_pos)\n    event.accept()\n    return\n```\n\n3. Zoom Level Management:\n```python\ndef zoom_in(self):\n    if self.zoom_level < self.max_zoom:\n        self.zoom_level *= self.zoom_factor\n        self.update_zoom()\n\ndef zoom_out(self):\n    if self.zoom_level > self.min_zoom:\n        self.zoom_level /= self.zoom_factor\n        self.update_zoom()\n```",
+      "dependencies": [
+        "PyMuPDF (fitz) for PDF rendering",
+        "PySide6 for GUI components",
+        "Qt.KeyboardModifier for input handling"
+      ],
+      "createdAt": "2025-04-14T04:18:49.309Z",
+      "updatedAt": "2025-04-14T04:18:49.309Z"
+    }
+  ]
+}

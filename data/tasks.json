@@ -1,0 +1,291 @@
+{
+  "tasks": [
+    {
+      "id": "1744088570375",
+      "title": "Create initial cellular growth mechanic",
+      "description": "Implement the core loop for cell division and resource generation, which will serve as the foundation for the game's progression system.",
+      "status": "DONE",
+      "createdAt": "2025-04-08T05:02:50.375Z",
+      "updatedAt": "2025-04-08T05:36:30.088Z"
+    },
+    {
+      "id": "1744090552754",
+      "title": "Implement RNA and DNA resource tiers",
+      "description": "Add RNA and DNA as higher-tier resources with appropriate production mechanics, unlocks, and upgrades. These will serve as prerequisites for the second prestige layer.",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T05:35:52.754Z",
+      "updatedAt": "2025-04-08T05:35:52.754Z"
+    },
+    {
+      "id": "1744090560834",
+      "title": "Implement first prestige layer transition",
+      "description": "Develop the first prestige transition from Cellular Biology to Molecular Biology, including reset mechanics, permanent bonuses, and new features unlocked.",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T05:36:00.834Z",
+      "updatedAt": "2025-04-08T05:36:00.834Z"
+    },
+    {
+      "id": "1744090564127",
+      "title": "Balance resource production and upgrade costs",
+      "description": "Fine-tune resource production rates, conversion ratios, and upgrade costs based on testing feedback to ensure a smooth progression curve throughout the game.",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T05:36:04.127Z",
+      "updatedAt": "2025-04-08T05:36:04.127Z"
+    },
+    {
+      "id": "1744090567240",
+      "title": "Add save/load functionality",
+      "description": "Implement save and load functionality to persist game state between sessions, including serialization of all game data and appropriate handling of version changes.",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T05:36:07.240Z",
+      "updatedAt": "2025-04-08T05:36:07.240Z"
+    },
+    {
+      "id": "1744090571759",
+      "title": "Enhance visual feedback for cell division and resource production",
+      "description": "Improve visual effects and animations for cell division and resource production to provide clearer feedback and more engaging visuals. Add particle effects, transition animations, and enhanced cell visualizations.",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T05:36:11.759Z",
+      "updatedAt": "2025-04-08T05:36:11.759Z"
+    },
+    {
+      "id": "1744091771346",
+      "title": "UI Enhancement: Button Interaction Feedback",
+      "description": "Implemented responsive UI with button hover and click animations. The UI now scales properly with different window sizes, includes smooth animations for buttons, and improves visual feedback for interactive elements. Future improvements could include:\n\n1. Add sound effects for button clicks and hover events\n2. Implement tooltips for buttons that show detailed information\n3. Add particle effects for cell division animations\n4. Improve resource bar visualization with progress indicators\n5. Add subtle background animations or patterns",
+      "status": "completed",
+      "createdAt": "2025-04-08T05:56:11.346Z",
+      "updatedAt": "2025-04-08T05:56:11.346Z"
+    },
+    {
+      "id": "1744093417128",
+      "title": "Implement RNA and DNA Resource Production",
+      "description": "Add functionality for RNA and DNA resources as the next tiers after proteins. This includes:\n1. Adding RNA production from proteins\n2. Adding DNA synthesis from RNA\n3. Adding corresponding UI elements for RNA and DNA resources\n4. Implementing their production rates and consumption logic\n5. Creating upgrade paths related to RNA and DNA production efficiency",
+      "status": "IN_PROGRESS",
+      "createdAt": "2025-04-08T06:23:37.129Z",
+      "updatedAt": "2025-04-08T06:23:37.129Z"
+    },
+    {
+      "id": "1744093484172",
+      "title": "Refactor UI Module for Better Modularity and Scaling",
+      "description": "Create a more modular UI system with the following improvements:\n\n1. Separate UI components into individual modules (buttons, panels, resource displays)\n2. Implement a centralized font management system\n3. Create a consistent UI element factory for generating common components\n4. Add proper aspect ratio handling for different screen dimensions\n5. Improve text rendering to prevent overlap at different scales\n6. Add configurable UI themes with consistent colors from config.lua\n7. Implement better tooltips that adjust to screen edges\n8. Ensure all UI elements have proper spacing at all resolutions",
+      "status": "IN_PROGRESS",
+      "createdAt": "2025-04-08T06:24:44.172Z",
+      "updatedAt": "2025-04-08T06:30:49.450Z"
+    },
+    {
+      "id": "1744096815008",
+      "title": "Complete UI Component System Migration",
+      "description": "Refactor the remaining direct UI rendering code to use the component system consistently throughout the application. This includes:\n1. Convert all manual panel drawing to use the panel component\n2. Move cell visualization to a dedicated component\n3. Standardize notification system as a component\n4. Update any remaining direct drawing code",
+      "status": "NEEDS_REVIEW",
+      "createdAt": "2025-04-08T07:20:15.008Z",
+      "updatedAt": "2025-04-08T07:26:14.617Z"
+    },
+    {
+      "id": "1744096819280",
+      "title": "Improve Visual Feedback and Animation System",
+      "description": "Enhance the UI feedback systems for better user experience:\n1. Add smooth transitions between panels\n2. Improve button hover and click animations\n3. Add visual feedback for resource gains/losses\n4. Implement a small animation library for reusable effects\n5. Consider adding configurable sound effects for key interactions",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T07:20:19.280Z",
+      "updatedAt": "2025-04-08T07:20:19.280Z"
+    },
+    {
+      "id": "1744096823310",
+      "title": "Performance Optimization for Cell Visualization",
+      "description": "Optimize the cell visualization system for better performance with large numbers of cells:\n1. Implement batch rendering for cells using love.graphics.points or a custom shader\n2. Add LOD (level of detail) system to simplify rendering for distant or numerous cells\n3. Optimize animation updates by only updating visible cells\n4. Add configurable detail level in the settings\n5. Implement cell clustering for very high cell counts (100+)",
+      "status": "BACKLOG",
+      "createdAt": "2025-04-08T07:20:23.310Z",
+      "updatedAt": "2025-04-08T07:20:23.310Z"
+    },
+    {
+      "id": "1744096827711",
+      "title": "Comprehensive UI Testing Across Resolutions",
+      "description": "Improve the resolution testing system and ensure UI works well across device sizes:\n1. Create automated tests for critical UI functionality across resolutions\n2. Enhance resolution tester to save screenshots for comparison\n3. Fix any layout issues discovered during testing\n4. Ensure mobile-friendly touch targets for potential future web or mobile export\n5. Test on both ultrawide and vertical phone-style aspect ratios",
+      "status": "TODO",
+      "createdAt": "2025-04-08T07:20:27.711Z",
+      "updatedAt": "2025-04-08T07:20:27.711Z"
+    },
+    {
+      "id": "1744100661954",
+      "title": "Cell Specialization System",
+      "description": "Implement a cell specialization system to replace the manual \"Divide Cell\" feature with a more strategic mechanic. Features include:\n1. Automatic cell division at a configurable base rate\n2. Division Energy as a regenerating resource to boost division\n3. Three cell types with different benefits:\n   - Producer Cells: Generate more resources (50% bonus)\n   - Research Cells: Increase research progress\n   - Catalyst Cells: Boost division rate and provide production bonuses\n4. Visual representation with different colored cells\n5. UI for managing cell specialization",
+      "status": "DONE",
+      "createdAt": "2025-04-08T08:24:21.954Z",
+      "updatedAt": "2025-04-08T08:24:21.954Z"
+    },
+    {
+      "id": "1744101315631",
+      "title": "Fix UI Element Overlapping Issues",
+      "description": "Update the UI layout system to prevent overlapping elements when resizing the game window. Specific issues to address:\n\n1. Cell visualization overlapping with research panel\n2. Tooltips extending beyond panel boundaries\n3. Button labels overlapping at higher UI scales\n\nImplementation should:\n- Add minimum spacing requirements between components\n- Improve responsive layout handling in the layout.lua file\n- Add boundary checking for tooltips\n- Implement adaptive text sizing for buttons when space is limited\n- Test at multiple window sizes and UI scales",
+      "status": "TODO",
+      "createdAt": "2025-04-08T08:35:15.631Z",
+      "updatedAt": "2025-04-08T08:35:15.631Z"
+    },
+    {
+      "id": "1744131942976",
+      "title": "Fix UI Interaction and Styling Issues",
+      "description": "Fix several UI issues identified during testing:\n1. Fix broken click interactions on buttons\n2. Move top menu buttons up to create better spacing\n3. Change the game area background from white to a more suitable color\n4. Fix \"Glucose\" text appearing behind the \"Create Producer Cell\" button\n5. Ensure tooltips remain properly visible and don't overlap with other UI elements",
+      "status": "NEEDS_REVIEW",
+      "createdAt": "2025-04-08T17:05:42.976Z",
+      "updatedAt": "2025-04-08T17:10:03.213Z"
+    },
+    {
+      "id": "1744132574365",
+      "title": "Fix UI Coordinate Scaling Issues",
+      "description": "Resolve UI interaction issues by addressing coordinate scaling inconsistencies:\n\n1. Update mouse handling functions to consistently handle raw coordinates without double-scaling\n2. Fix the interface.mousepressed/mousereleased/mousemoved functions to forward events to core first\n3. Ensure component.isInside methods are correctly handling scaling\n4. Add better debug logging to help track UI coordinate issues\n5. Implement proper event propagation between interface and core modules",
+      "status": "NEEDS_REVIEW",
+      "createdAt": "2025-04-08T17:16:14.366Z",
+      "updatedAt": "2025-04-08T17:17:19.117Z"
+    },
+    {
+      "id": "1744618110269",
+      "title": "Implement PDF Editing Features",
+      "description": "Add PDF editing capabilities to the PDF Splitter application, focusing on text markup, annotation tools, and basic content manipulation. This will transform the application from a simple splitter to a more comprehensive PDF utility.",
+      "status": "planned",
+      "createdAt": "2025-04-14T08:08:30.269Z",
+      "updatedAt": "2025-04-14T08:08:30.269Z"
+    },
+    {
+      "id": "1744647910718",
+      "title": "Refactor knucklebot.py into smaller modules",
+      "description": "The knucklebot.py file has grown too large and needs to be refactored into smaller, more manageable modules.\n\nRecommended structure:\n1. `bot/` directory for the main bot code\n   - `__init__.py` - For package initialization\n   - `bot.py` - Core bot class definitions (KnuckleBot, TreeCommandBot)\n   - `commands.py` - Command implementation (kbaddclimb, kbhelp, etc.)\n   - `modals.py` - Discord UI modals (GeneralClimbRequestModal)\n   - `views.py` - Discord UI views (ClimbScoreView)\n\n2. `utils/` directory for utility functions\n   - `validators.py` - Input validation functions\n   - `converters.py` - Conversion functions\n   - `api_limiter.py` - Rate limiting for API calls\n   - `image_generator.py` - Leaderboard image generation\n\n3. `cogs/` directory for cogs\n   - Existing cogs like leaderboard_cog.py\n\nThe main.py file should import from these modules and set up the bot.\n\nThis will make the codebase more maintainable, easier to debug, and follow better software architecture practices.",
+      "status": "todo",
+      "createdAt": "2025-04-14T16:25:10.718Z",
+      "updatedAt": "2025-04-14T16:25:10.718Z"
+    },
+    {
+      "id": "d26d5034-0785-4661-94fa-49e882e51886",
+      "title": "Implement Page Reordering Logic",
+      "description": "Implement function `_move_page_in_state(edit_state, list_index, direction)`: Modifies `edit_state` list in-place. Removes item at `list_index` and re-inserts it one position up or down based on `direction`. Includes boundary checks.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:41:25.039Z",
+      "updatedAt": "2025-04-15T18:41:25.039Z"
+    },
+    {
+      "id": "e3106454-2d87-4711-89dc-dd5c3852c529",
+      "title": "Implement Edit State Initialization Logic",
+      "description": "Implement function `_initialize_edit_state(num_pages)`: Takes the number of pages, returns a list of dictionaries `{'original_index': i, 'rotation': 0, 'deleted': False}` for each page.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:41:26.948Z",
+      "updatedAt": "2025-04-15T18:41:26.948Z"
+    },
+    {
+      "id": "873a12f0-aedd-46f1-b367-128a4c3ef16a",
+      "title": "Implement Page Rotation Logic",
+      "description": "Implement function `_rotate_page_in_state(edit_state, list_index, angle)`: Modifies `edit_state` list in-place. Updates the 'rotation' value for the item at `list_index`, ensuring it wraps correctly (modulo 360).",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:41:28.759Z",
+      "updatedAt": "2025-04-15T18:41:28.759Z"
+    },
+    {
+      "id": "ed4e4f15-a5bc-4b69-be86-7732fa30cf20",
+      "title": "Implement Page Deletion Logic",
+      "description": "Implement function `_delete_page_in_state(edit_state, list_index)`: Modifies `edit_state` list in-place. Sets the 'deleted' flag to True for the item at `list_index`. Consider adding toggle functionality.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:41:31.714Z",
+      "updatedAt": "2025-04-15T18:41:31.714Z"
+    },
+    {
+      "id": "2b402894-741d-4e9f-bb93-05eb7ed1154f",
+      "title": "Implement PDF Editing Toolbar UI",
+      "description": "Add a QToolBar (or equivalent widget) above the pdfPreviewArea in PDFSplitterGUI. Populate it with actions/buttons for Rotate Left, Rotate Right, Delete Page, Move Page Up, Move Page Down, using appropriate icons. Implement logic to show/hide or enable/disable this toolbar based on whether a PDF is loaded.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:42:46.029Z",
+      "updatedAt": "2025-04-15T18:42:46.029Z"
+    },
+    {
+      "id": "590adac9-613c-42a6-8c82-450bcae56fa0",
+      "title": "Implement Clickable Page Selection in Preview",
+      "description": "Modify the PDF preview generation. Make individual page thumbnails (e.g., QLabels) clickable. On click: store the selected page's current list index, apply/remove visual highlighting, and enable/disable toolbar actions. Clear selection when clicking outside thumbnails.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:42:50.899Z",
+      "updatedAt": "2025-04-15T18:42:50.899Z"
+    },
+    {
+      "id": "1db80935-3895-4cd8-975a-65ceabbf48da",
+      "title": "Connect Editing Toolbar Actions to Backend Logic",
+      "description": "Create slots in PDFSplitterGUI for each editing action (rotate L/R, delete, move U/D). Connect toolbar button signals (triggered/clicked) to these slots. Slots should call the corresponding backend logic function (_rotate_page_in_state, etc.) using the stored selected_page_index and the edit_state list. Trigger a preview update afterwards.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:42:56.798Z",
+      "updatedAt": "2025-04-15T18:42:56.798Z"
+    },
+    {
+      "id": "e6e51911-3b5c-41d2-9289-42694a230df2",
+      "title": "Refactor Preview Rendering to Use Edit State",
+      "description": "Refactor the `update_pdf_preview` method. It should now iterate through the `edit_state` list. For each non-deleted page entry, load the original page using `original_index`, apply the stored `rotation`, render the thumbnail pixmap, and add it to the preview layout. Handle rendering of deleted pages (dim/hide). Apply selection highlight based on `selected_page_index`. Ensure thumbnails store their `list_index`.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:43:04.469Z",
+      "updatedAt": "2025-04-15T18:43:04.469Z"
+    },
+    {
+      "id": "90e1eb0a-490a-4cb5-ba62-be5d2d20b346",
+      "title": "Update Splitting Logic to Apply Edits",
+      "description": "Modify the `split_pdf` method (and related logic). Instead of operating directly on page ranges, iterate through the final `edit_state` list. For each non-deleted entry, retrieve the page by `original_index`, apply the final `rotation`, and insert it into the correct output document based on its position in the `edit_state` list and the splitting rules.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:43:10.535Z",
+      "updatedAt": "2025-04-15T18:43:10.535Z"
+    },
+    {
+      "id": "070c4c85-f951-4c7d-bace-12a066ece9d8",
+      "title": "Implement Edge Case Handling for PDF Editing",
+      "description": "Review and implement handling for edge cases in editing: moving first/last page, deleting all pages, operating on single-page PDFs, interaction between edits. Disable actions when invalid.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:43:15.100Z",
+      "updatedAt": "2025-04-15T18:43:15.100Z"
+    },
+    {
+      "id": "6de3d204-5ce9-4b97-8926-9241acaefac6",
+      "title": "Test PDF Editing Features and Output",
+      "description": "Perform comprehensive testing of all editing features (rotate, delete, move) individually and in combination. Verify preview updates correctly. Validate that the final split PDF output accurately reflects all applied edits in terms of content, rotation, and page order.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T18:43:17.527Z",
+      "updatedAt": "2025-04-15T18:43:17.527Z"
+    },
+    {
+      "id": "702b613e-f51c-46be-8632-e0b28fd70860",
+      "title": "Feature: Add Blank Page",
+      "description": "Add a button (likely to the edit toolbar) and logic to insert a blank page into the edit_state list. The preview should render a blank placeholder. Split logic needs to handle inserting actual blank pages into output PDFs.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T21:45:03.661Z",
+      "updatedAt": "2025-04-15T21:45:03.661Z"
+    },
+    {
+      "id": "aadef375-caf7-4ff8-895d-ae5eadb54c03",
+      "title": "Feature: Undo/Redo for Page Edits",
+      "description": "Implement an undo/redo stack for page manipulation actions (rotate, delete, move, add blank). This likely involves storing previous edit_state snapshots or using a command pattern.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T21:45:09.391Z",
+      "updatedAt": "2025-04-15T21:45:09.391Z"
+    },
+    {
+      "id": "361de2b6-8c39-444e-beff-bbcf68b7d9bc",
+      "title": "Enhancement: Visually Indicate Deleted Pages in Preview",
+      "description": "Modify PDFPreviewWidget.refresh_pages to render pages marked as deleted in the edit_state. Display them visually distinct (e.g., grayed out, reduced opacity, overlaid 'deleted' icon/text) instead of hiding them completely before the split action.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T21:45:12.596Z",
+      "updatedAt": "2025-04-15T21:45:12.596Z"
+    },
+    {
+      "id": "9b8f214c-00d1-41da-9b66-bf577d442b05",
+      "title": "Refactor: Modularize pdf_splitter_gui.py",
+      "description": "Refactor the monolithic pdf_splitter_gui.py file. Move UI components (TitleBar, BaseWindow, CustomDialog, PDFPageWidget, PDFPreviewWidget), utility classes (Config, IconProvider), dialogs (About, Options), and potentially backend logic into separate modules/files to improve maintainability and readability.",
+      "status": "BACKLOG",
+      "dependsOn": [],
+      "createdAt": "2025-04-15T21:45:17.878Z",
+      "updatedAt": "2025-04-15T21:45:17.878Z"
+    }
+  ]
+}

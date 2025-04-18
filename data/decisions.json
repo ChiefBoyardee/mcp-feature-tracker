@@ -1,0 +1,243 @@
+{
+  "decisions": [
+    {
+      "id": "1744088585736",
+      "title": "Resource System Design",
+      "description": "How to structure the resource generation and consumption flow for cell division mechanics.",
+      "rationale": "We'll use a tiered resource system where basic resources (glucose, amino acids) are used to create more complex components (proteins, RNA) which enable new capabilities. This creates a natural progression curve and gates advanced features behind resource challenges.",
+      "alternatives": [
+        "Single resource system with multipliers",
+        "Binary resource types (energy and building blocks)",
+        "Complex web with dozens of interdependent resources"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:03:05.736Z"
+    },
+    {
+      "id": "1744090493055",
+      "title": "Core Progression Loop Design",
+      "description": "How to structure the main progression loop of the game to ensure engaging gameplay through multiple prestige layers.",
+      "rationale": "We'll implement a multi-layered progression model where:\n1. Players start with cellular biology, focusing on cell division and basic resources\n2. As they accumulate cells and resources, they unlock new resource types (amino acids, proteins)\n3. Upgrades provide a smooth power curve that creates meaningful progression\n4. When specific milestones are reached, players can prestige to the next scientific layer\n5. Each new layer adds complexity with new resources and mechanics while boosting previous layers\n\nThis creates a satisfying loop where players constantly have near-term goals (next upgrade), mid-term goals (new resource types), and long-term goals (reaching the next prestige layer).",
+      "alternatives": [
+        "Single prestige layer with deep upgrade tree",
+        "Parallel progress paths without prestige resets",
+        "Specialization paths that lock out other options"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:34:53.055Z"
+    },
+    {
+      "id": "1744090500433",
+      "title": "Resource Production and Consumption Balance",
+      "description": "How to balance resource generation rates and consumption for satisfying gameplay progression.",
+      "rationale": "We've implemented a balanced resource economy where:\n\n1. Base resource (glucose) is generated automatically by cells at a predictable rate\n2. Higher-tier resources require manual conversion initially, with diminishing conversion rates (5 glucose → 1 amino acid, 4 amino acids → 1 protein)\n3. Cell division costs increase slightly with each new cell to create a natural soft cap\n4. Upgrade costs follow an exponential curve (x1.5 per level) to ensure a consistent feeling of progress\n5. Production upgrades provide diminishing returns to prevent infinite scaling\n\nThis creates a satisfying balance where players need to make strategic decisions about when to convert resources and which upgrades to prioritize, while ensuring the game doesn't stall at any point.",
+      "alternatives": [
+        "Linear scaling for all costs and production",
+        "Fixed costs with linear production increases",
+        "Higher conversion rates with more expensive upgrades"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:35:00.433Z"
+    },
+    {
+      "id": "1744090517205",
+      "title": "UI Design for Cellular Representation",
+      "description": "How to visually represent cells and cellular processes in an intuitive way that balances scientific accuracy with engaging gameplay.",
+      "rationale": "We've chosen to represent cells as animated circles with subtle pulsing effects that:\n\n1. Visually scale with the number of cells in the player's colony\n2. Include visual indicators when cell division is occurring (division line)\n3. Show resource production through subtle animations\n4. Use appropriate colors to represent different cell types and resources\n5. Maintain a clean, minimal aesthetic that doesn't overwhelm the player\n\nThis approach allows for quick visual feedback on game state while maintaining scientific integrity in the representation. The UI also includes clear resource counters and production rates to provide precise information about game progress.",
+      "alternatives": [
+        "Detailed microscopic cell visualizations",
+        "Abstract representations with shapes and symbols",
+        "Text-only display with no visual cells"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:35:17.205Z"
+    },
+    {
+      "id": "1744090523338",
+      "title": "Code Architecture for Modularity",
+      "description": "How to structure the codebase to ensure modularity, maintainability, and extensibility for future development.",
+      "rationale": "We've implemented a modular architecture with clear separation of concerns:\n\n1. Core game systems are divided into independent modules (gameState, cellSystem, resourceSystem)\n2. UI rendering is separated from game logic\n3. Configuration values are centralized in a config module\n4. Each system follows a consistent initialize/update pattern for Love2D integration\n5. Game state is managed centrally but accessed through getter/setter methods\n6. Resource definitions and conversion rates are clearly defined and easily modifiable\n\nThis approach allows for easy addition of new features (like new resource types or cell behaviors) without major code refactoring. It also facilitates debugging by isolating potential issues to specific modules.",
+      "alternatives": [
+        "Object-oriented approach with inheritance",
+        "Entity-component system",
+        "Event-driven architecture"
+      ],
+      "relatedTask": "1744088570375",
+      "createdAt": "2025-04-08T05:35:23.338Z"
+    },
+    {
+      "id": "1744091875536",
+      "title": "Fixed UI Module Loading and Resource System Integration",
+      "description": "Fixed several issues with the UI module not loading properly:\n\n1. Fixed package path in game/main.lua to correctly load modules from the src directory\n2. Resolved circular dependency between resourceSystem and cellSystem\n3. Added missing getDivisionProgress function to cellSystem\n4. Implemented direct resource rate calculation in resourceSystem instead of relying on cellSystem",
+      "rationale": "The UI module was failing to load due to multiple issues, primarily circular dependencies between modules and missing functions that were being called. By implementing direct calculation in the resourceSystem and adding proper accessor methods, we've eliminated circular references while keeping the same functionality. This promotes better modular design and prevents dependency issues.",
+      "alternatives": [
+        "Using a global object to share state between modules",
+        "Merging cellSystem and resourceSystem into a single module",
+        "Using a dependency injection pattern"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T05:57:55.536Z"
+    },
+    {
+      "id": "1744092507083",
+      "title": "Improved UI Scaling for Different Screen Sizes",
+      "description": "Enhanced the UI scaling system to better handle different screen sizes, especially large screens. Key improvements include:\n\n1. Capped the maximum scale factor to 1.5 to prevent elements from becoming too large\n2. Updated button positioning to scale proportionally with screen size\n3. Improved cell visualization placement to maintain proper layout at different scales\n4. Added adaptive cell sizing based on cell count and screen size\n5. Fixed the rendering to properly scale and position UI elements",
+      "rationale": "The previous implementation had issues with larger screens where elements could scale too much and potentially overlap or be positioned incorrectly. The improved approach maintains proper spacing between UI components, ensures buttons are correctly sized, and provides a consistent experience across different screen resolutions.",
+      "alternatives": [
+        "Using fixed positions regardless of screen size",
+        "Implementing multiple predefined layouts for different screen sizes",
+        "Creating a fully responsive grid-based layout system"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T06:08:27.083Z"
+    },
+    {
+      "id": "1744093071673",
+      "title": "Enhanced UI Scaling for Fullscreen and Large Displays",
+      "description": "Improved UI scaling system for better handling of fullscreen and larger resolutions with the following changes:\n\n1. Better bounds for UI scaling factors based on screen resolution\n2. Relative positioning and proportional sizing for all UI elements\n3. Improved button layout calculations based on screen width\n4. Adaptive content positioning across all panels\n5. Properly scaled fonts and text positioning\n6. Fixed menu positioning and information displays",
+      "rationale": "The previous implementation had limitations with fullscreen and larger displays where UI elements would scale disproportionately. The revised approach adapts the UI elements more intelligently to different screen sizes, ensuring proper spacing, sizing, and positioning of all interactive elements and text. This creates a consistent experience across resolutions while making better use of available screen space without distortion or overlap.",
+      "alternatives": [
+        "Using fixed scaling tiers based on resolution ranges",
+        "Implementing alternate layouts for different aspect ratios",
+        "Creating a fully adaptive grid layout that reconfigures based on available space"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T06:17:51.673Z"
+    },
+    {
+      "id": "1744093846266",
+      "title": "UI Modularity and Scaling Improvements",
+      "description": "Refactored the UI system to improve modularity and scaling across different screen resolutions",
+      "rationale": "The original UI implementation had several issues with scaling at different resolutions and lacked modularity. We've implemented a comprehensive solution with:\n\n1. A centralized font management system that properly scales text based on screen size\n2. A theme module that standardizes colors and draws UI elements consistently\n3. A component system allowing easy creation of buttons, panels, and progress bars\n4. A layout manager that calculates proper positioning across different screen sizes\n5. Proper handling of aspect ratios and safe areas to prevent UI elements from being cut off\n6. Separation of UI element creation from rendering logic\n7. Better tooltip system that detects screen edges\n8. Unified scaling approach that maintains consistent spacing\n\nThis approach allows the UI to be more maintainable, easier to extend, and provides a consistent experience across different screen resolutions without requiring separate designs for each resolution.",
+      "alternatives": [
+        "Using fixed pixel positions with simple scaling multipliers",
+        "Implementing a complex grid-based layout system",
+        "Creating separate UI layouts for different resolution tiers",
+        "Using Love2D's built-in scaled drawing without additional abstractions",
+        "Implementing responsive breakpoints similar to web CSS media queries"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T06:30:46.266Z"
+    },
+    {
+      "id": "1744096833011",
+      "title": "Prioritize UI component consistency before new features",
+      "description": "We've decided to focus on completing the migration to a consistent component-based UI system before implementing any new gameplay features.",
+      "rationale": "The current codebase has a mix of direct drawing code and component-based drawing. This inconsistency makes maintenance more difficult and would lead to increasing technical debt if we add more features without standardizing. By finishing the component system migration, we'll create a more maintainable codebase, improve performance, and establish a foundation for rapid addition of new UI elements in the future.",
+      "alternatives": [
+        "Continue with hybrid UI rendering approach",
+        "Focus on new gameplay features first",
+        "Rewrite the UI system from scratch"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T07:20:33.011Z"
+    },
+    {
+      "id": "1744097179655",
+      "title": "UI Component System Architecture",
+      "description": "We've established a consistent component-based architecture for the UI system with managed lifecycle, scaling, and visibility.",
+      "rationale": "By creating specialized components (CellVisualization, NotificationSystem) and standardizing their lifecycle (initialization, updating, drawing), we've improved code organization, reduced duplication, and made the UI more maintainable. The components handle their own scaling, visibility, and state management, making it easier to add new UI elements in the future while ensuring consistent behavior across different screen sizes.",
+      "alternatives": [
+        "Continue with direct drawing approach",
+        "Use a third-party UI library",
+        "Create a more complex component hierarchy with inheritance"
+      ],
+      "relatedTask": "1744096815008",
+      "createdAt": "2025-04-08T07:26:19.655Z"
+    },
+    {
+      "id": "1744099490006",
+      "title": "Redesign Cell Division System",
+      "description": "Redesign the cell division system to be semi-automatic and upgradable, replacing the manual \"Divide Cell\" button.",
+      "rationale": "The current manual cell division system requires excessive clicking, which creates a gameplay bottleneck. A semi-automatic system with upgrades will provide more engaging progression and strategic depth while reducing player fatigue.",
+      "alternatives": [
+        "Keep manual system but add multipliers",
+        "Make division fully automatic with no player interaction",
+        "Implement a hybrid system with both manual and automatic components"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T08:04:50.006Z"
+    },
+    {
+      "id": "1744099614241",
+      "title": "Cell Division System Overhaul",
+      "description": "Redesign the cell division system to be more automatic, engaging, and upgradeable.",
+      "rationale": "The current system requires manual clicking of the \"Divide Cell\" button, which becomes repetitive and lacks strategic depth. Modern incremental games use more engaging mechanics like idle simulation, management systems, merging, and automation with meaningful choices.",
+      "alternatives": [
+        "Keep manual division button with faster auto-progress",
+        "Complex cell merging system",
+        "Cell specialization system",
+        "Pure idle automation"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T08:06:54.241Z"
+    },
+    {
+      "id": "1744100395606",
+      "title": "Automatic Cell Division System with Cell Specialization",
+      "description": "Redesign the \"Divide Cell\" button-clicking mechanic to implement an automatic cell division system with strategic specialization choices",
+      "rationale": "Button-clicking mechanics become tedious and unengaging in incremental games. The new system creates strategic depth by allowing players to specialize cells for different purposes (production, research, division catalysts) while maintaining automatic progression. This system draws inspiration from successful mechanics in games like Kittens Game and Evolve Idle, using a regenerating \"division energy\" resource that players can strategically spend to boost progress rather than constantly clicking.",
+      "alternatives": [
+        "Keep button clicking but add automation upgrades",
+        "Create a mini-game for cell division",
+        "Implement a pure idle system with no interaction"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-08T08:19:55.606Z"
+    },
+    {
+      "id": "1744604318850",
+      "title": "PDF Preview Navigation Implementation",
+      "description": "Implementation of PDF preview navigation controls including zooming and scrolling.",
+      "rationale": "We implemented a comprehensive navigation system that includes:\n1. Ctrl+Scroll for zooming (1.2x factor per step, range 0.1x to 5.0x)\n2. Alt+Scroll for horizontal scrolling (using scrollbar steps with 4x multiplier)\n3. Regular scroll for vertical scrolling\n4. Support for native horizontal scrolling events\n\nThis provides intuitive and efficient navigation while maintaining compatibility with standard PDF viewer controls.",
+      "alternatives": [
+        "Manual zoom buttons with fixed increments",
+        "Slider-based zoom control",
+        "Click-and-drag panning instead of scroll bars",
+        "Different modifier keys for controls"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-14T04:18:38.850Z"
+    },
+    {
+      "id": "1744740672898",
+      "title": "Initial PDF Editing Feature Set",
+      "description": "Define the initial set of PDF page manipulation features for the preview pane.",
+      "rationale": "Start with core manipulation features (Rotate, Delete, Reorder) to provide basic editing capabilities quickly. More features can be added later based on feedback.",
+      "alternatives": [
+        "Adding blank pages",
+        "Duplicating pages",
+        "Direct text editing (too complex)"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:11:12.898Z"
+    },
+    {
+      "id": "b05cb362-f7e6-49b0-9dad-475ac6b3e088",
+      "title": "Define Initial PDF Editing Features",
+      "description": "Decided on the core set of PDF page manipulation features for the first iteration.",
+      "rationale": "Start with essential operations (Rotate, Delete, Reorder) to establish the editing framework before considering more complex features. This provides core value quickly.",
+      "alternatives": [
+        "Including splitting/merging within edit",
+        "Only rotation initially"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:21:22.105Z",
+      "updatedAt": "2025-04-15T18:21:22.105Z"
+    },
+    {
+      "id": "c510ade6-1dda-499c-ad26-36877ec88f3e",
+      "title": "PDF Edit Tracking Data Structure",
+      "description": "Selected data structure for tracking PDF edits: A list of dictionaries. Each dict represents a page in its current state and order, containing 'original_index' (int), 'rotation' (int 0/90/180/270), and 'deleted' (bool).",
+      "rationale": "This structure allows non-destructive tracking of rotation, deletion, and reordering. It's relatively simple to manage and query for updating the preview and performing the final split operation.",
+      "alternatives": [
+        "Modifying fitz document in memory directly",
+        "Using a separate list for deleted pages",
+        "Using page objects instead of dicts"
+      ],
+      "relatedTask": null,
+      "createdAt": "2025-04-15T18:41:13.254Z",
+      "updatedAt": "2025-04-15T18:41:13.254Z"
+    }
+  ]
+}
