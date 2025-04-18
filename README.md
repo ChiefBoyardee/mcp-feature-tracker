@@ -1,14 +1,8 @@
-﻿![MCP Feature Tracker Server Banner](banner.png)
+﻿![MCP Feature Tracker Banner](banner.png)
 
-# MCP Feature Tracker Server
+# MCP Feature Tracker
 
 A lightweight Node.js server implementing the MCP (Multi-Capability Partnership) protocol for basic project tracking. This server helps you (or your AI coding assistant!) keep track of project tasks, notes, decisions, and goals right from your workspace using simple SQLite databases.
-
-**Repository:** [https://github.com/ChiefBoyardee/mcp-feature-tracker](https://github.com/ChiefBoyardee/mcp-feature-tracker)
-
-**Author:** Jay Jewell-Roth jayjewellroth@gmail.com (From package.json)
-
-**License:** MIT (See `LICENSE` file for details)
 
 ## Features
 
@@ -142,32 +136,25 @@ Configure Cursor by editing its `mcp.json` file (usually found via `Settings ⚙
 
 **2. Windsurf:**
 
-Configure Windsurf by creating or editing its configuration file (e.g., `windsurf_config.json`):
+Configure Windsurf via its UI, likely through the Settings menu, the Cascade panel (hammer icon 🔨 -> Configure), or the Chat panel (+ Configure MCP):
 
-```json
-{
-  "mcpServers": [
-    {
-      "id": "local-tracker",
-      "url": "http://localhost:31337",
-      "prefix": "mcp_feature-tracker"
-    }
-  ]
-}
-```
+*   Find the section for adding/managing MCP servers.
+*   Provide a name (e.g., "Local Feature Tracker").
+*   Enter the server URL: `http://localhost:31337` (or your configured `MCP_PORT`).
+*   Enter the Tool Prefix: `mcp_feature-tracker`.
+
 *Initialization Call Required:* `mcp_feature-tracker_initializeProjectContext` with `workspaceFolderPath`.
 
 **3. Claude Code:**
 
-Configure Claude Code by creating or editing its settings file (e.g., `claude_settings.yaml`):
+Configure Claude Code via its Settings menu:
 
-```yaml
-mcp:
-  endpoints:
-    - name: MyTracker
-      baseUrl: http://localhost:31337/
-      toolFilter: "mcp_feature-tracker_*"
-```
+*   Look for a section related to MCP or Tool Servers.
+*   Add a new server configuration.
+*   Provide a name (e.g., "MyTracker").
+*   Enter the Base URL: `http://localhost:31337/`
+*   Optionally, set a tool filter if available: `mcp_feature-tracker_*`
+
 *Initialization Call Required:* `mcp_feature-tracker_initializeProjectContext` with `workspaceFolderPath`.
 
 **4. Cline (CLI Tool):**
@@ -201,7 +188,9 @@ Configure Roo using its settings interface:
 
 Contributions are welcome! Please feel free to submit pull requests or open issues on the [GitHub repository](https://github.com/ChiefBoyardee/mcp-feature-tracker).
 
-*(Placeholder for more detailed contributing guidelines if needed)*
+**Repository:** [https://github.com/ChiefBoyardee/mcp-feature-tracker](https://github.com/ChiefBoyardee/mcp-feature-tracker)
+
+**Author:** ChiefBoyardee jayjewellroth@gmail.com
 
 ## License
 
